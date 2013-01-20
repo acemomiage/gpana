@@ -1,0 +1,6 @@
+How to build gpana
+==============================
+% mkdir gpana/build
+% cd gpana/build
+% cmake ../src
+% make
