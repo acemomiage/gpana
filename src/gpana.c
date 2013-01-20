@@ -31,28 +31,28 @@ gint cb_expose(GtkWidget	*widget,
 	       GdkEventExpose	*e,
 	       gpointer		 data)
 {
-  GdkPixbuf	*pixbuf;
-  GdkPixbuf	*bg;
-  GdkPixmap	*map;
-  gint		 w, h;
+  cairo_t		*cr;
+  cairo_surface_t	*surface;
+  GdkPixbuf		*pixbuf;
+  GdkPixbuf		*bg;
+  /* GdkPixmap		*map; */
+  gint			 w, h;
+
+  cr = gdk_cairo_create(gtk_widget_get_parent_window(widget));
 
   pixbuf = gdk_pixbuf_new_from_file("test.jpg", NULL);
-    
   w  = gdk_pixbuf_get_width(pixbuf);
   h  = gdk_pixbuf_get_height(pixbuf);
   bg = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
-  gdk_pixbuf_composite_color(pixbuf, bg,
-			     0, 0, w, h, 0, 0, 1.0, 1.0,
-			     GDK_INTERP_BILINEAR, 255, 0, 0, 16,
-			     0xaaaaaa, 0x555555);
-  gdk_pixbuf_render_pixmap_and_mask(bg, &map, NULL, 255);
-  gtk_widget_set_size_request(widget, 100, 100);
-  gdk_window_set_back_pixmap(widget->window, map, FALSE);
-  gdk_window_clear(widget->window);
- 
-  g_object_unref(bg);
-  g_object_unref(map);
 
+  gdk_cairo_set_source_pixbuf(cr, pixbuf, w, h);
+  cairo_paint(cr);
+  cairo_pattern_set_extend(cairo_get_source(cr), CAIRO_EXTEND_REPEAT);
+  cairo_rectangle(cr, 0, 0, w, h);
+  cairo_fill(cr);
+  cairo_destroy(cr);
+  g_object_unref(bg);
+  
   return TRUE;
 }
 
