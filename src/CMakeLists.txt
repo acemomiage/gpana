@@ -7,6 +7,9 @@ configure_file(
   "${PROJECT_SOURCE_DIR}/version.h.in"
   "${PROJECT_SOURCE_DIR}/version.h")
 
+# misc
+set(CMAKE_CXX_FLAGS "-Wall")
+
 # for GTK+-3.0
 find_package(PkgConfig REQUIRED)
 # pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
