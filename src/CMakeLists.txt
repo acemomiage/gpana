@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 project(gpana)
 # version number
 set(GPANA_VERSION_MAJOR 0)
-set(GPANA_VERSION_MINOR 1)
+set(GPANA_VERSION_MINOR 0)
+set(GPANA_VERSION_MICRO 1)
 configure_file(
   "${PROJECT_SOURCE_DIR}/version.h.in"
   "${PROJECT_SOURCE_DIR}/version.h")

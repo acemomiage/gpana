@@ -1,2 +1,6 @@
 - gtk mirating 2 to 3
 http://developer.gnome.org/gtk3/3.0/gtk-migrating-2-to-3.html
+
+- gdk-pixbuf reference
+http://developer.gnome.org/gdk-pixbuf/stable/
+

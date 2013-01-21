@@ -1,3 +1,7 @@
+2013-01-22  Tsuyoshi ICHIKAWA  <ace@momiage.org>
+
+	* draw using cairo.
+
 2013-01-21  Tsuyoshi ICHIKAWA  <ace@momiage.org>
 
 	* 1st commit.
